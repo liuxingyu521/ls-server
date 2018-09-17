@@ -1,14 +1,18 @@
 module.exports = function(serverConfig) {
 
   var fs = require('fs');
+  var path = require('path');
   var http = require('http');
   var https = require('https');
 
   var express = require('express');
   var app = express();
 
-  // 默认处理当前文件夹下的静态文件
-  app.use(express.static(serverConfig.rootDir));
+  // 默认处理当前指定文件夹下的静态文件
+  serverConfig.staticDirs.forEach(function(dir){
+    app.use(express.static(path.resolve(dir)));
+    console.log(path.resolve(dir));
+  })
 
   var protocol = serverConfig.useHttps ? 'https' : 'http';
 

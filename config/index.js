@@ -1,5 +1,6 @@
+// ls-server 的默认配置
 module.exports = {
-  port: 8899,
+  port: 8888,
   useHttps: false,
-  rootDir: '.'
+  staticDirs: ['./public/', '.']
 }
