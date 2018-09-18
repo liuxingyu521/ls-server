@@ -1,23 +1,23 @@
 {
   "name": "ls-server",
-  "version": "0.0.2",
-  "description": "a single local node-server by express & support http/https",
+  "version": "0.0.4",
+  "description": "a single local static server(ls-server) by express & support http/https",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server.js"
   },
   "bin": {
-    "ls-server": "bin/ls-server.js"
+    "ls-server": "bin/ls-server"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/liuxingyu521/ls-server.git"
   },
   "keywords": [
-    "server",
+    "local server",
     "node",
-    "proxy"
+    "express"
   ],
   "author": "Xuer",
   "license": "ISC",
@@ -27,12 +27,12 @@
   "homepage": "https://github.com/liuxingyu521/ls-server#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "yargs": "^12.0.2",
+    "commander": "^2.18.0",
+    "chalk": "^2.4.1"
   },
   "devDependencies": {
-    "chalk": "^2.4.1",
-    "commander": "^2.18.0",
-    "eslint": "^5.6.0",
-    "yargs": "^12.0.2"
+    "eslint": "^5.6.0"
   }
 }

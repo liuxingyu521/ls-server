@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+var chalk = require('chalk');
+var yargs = require('yargs');
+// var program = require('commander');
+
+var default_config = require('../config');
+var version = require('../package.json').version;
+
+// 配置帮助信息
+yargs
+  .usage(chalk.cyan.bold('ls-server') + ' ~ @'
+            + version
+            + '\n\n'
+            + 'Usage: $0 [(--port | -p) <port>] [--https] [(--dirs | -d) <dir1 dir2 ...>]')
+  .help('help').alias('help', 'h')
+  .version('version', version).alias('version', 'v')
+  .options({
+    port: {
+      alias: 'p',
+      description: "<port> 设置服务器端口号， 默认为" + chalk.green('9999'),
+      type: 'number'
+    },
+    // https: {
+    //   description: "<boolean> 是否启用https",
+    //   type: 'boolean'
+    // },
+    dirs: {
+      alias: 'd',
+      description: "<dir> 设置服务器静态资源目录，可以设置多个，用空格隔开",
+      type: 'array'
+    }
+  })
+
+// 获取命令行参数
+var argv = yargs.argv;
+
+var server_config = {
+  port: argv.port || default_config.port,
+  // useHttps: argv.https || default_config.useHttps,
+  staticDirs: argv.dirs || default_config.staticDirs
+}
+
+require('../server')(server_config);
