@@ -4,6 +4,7 @@ module.exports = function(serverConfig) {
   var path = require('path');
   var http = require('http');
   // var https = require('https');
+  var chalk = require('chalk');
 
   var express = require('express');
   var app = express();
@@ -42,6 +43,12 @@ module.exports = function(serverConfig) {
 
   // 使用server监听端口
   server.listen(serverConfig.port, function () {
-    console.log(protocol + '-server lauched at ' + protocol + '://localhost:%s', serverConfig.port);
+    console.log(chalk.cyan('服务器静态资源路径为:'));
+
+    serverConfig.staticDirs.forEach(function (dir) {
+      console.log('  ' + path.resolve(dir) + '/');
+    })
+
+    console.log('\n' + chalk.green(protocol + '-server lauched at ' + protocol + '://localhost:%s'), serverConfig.port);
   })
 }
