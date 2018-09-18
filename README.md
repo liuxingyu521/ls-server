@@ -37,6 +37,7 @@ $ ls-server
 
 # http-server lauched at http://localhost:9999
 ```
+
 2. 开启指定端口号的本地服务器
 
 ```sh
