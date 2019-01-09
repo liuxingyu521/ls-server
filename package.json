@@ -27,10 +27,11 @@
   "homepage": "https://github.com/liuxingyu521/ls-server#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "yargs": "^12.0.2",
+    "chalk": "^2.4.1",
     "commander": "^2.18.0",
-    "chalk": "^2.4.1"
+    "express": "^4.16.2",
+    "portfinder": "^1.0.20",
+    "yargs": "^12.0.2"
   },
   "devDependencies": {
     "eslint": "^5.6.0"

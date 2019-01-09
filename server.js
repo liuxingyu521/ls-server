@@ -5,6 +5,7 @@ module.exports = function(serverConfig) {
   var http = require('http');
   // var https = require('https');
   var chalk = require('chalk');
+  var portFinder = require('portFinder');
 
   var express = require('express');
   var app = express();
@@ -41,14 +42,21 @@ module.exports = function(serverConfig) {
       res.end();
   })
 
-  // 使用server监听端口
-  server.listen(serverConfig.port, function () {
-    console.log(chalk.cyan('服务器静态资源路径为:'));
+  portFinder.basePort = serverConfig.port || 8888;
+  portFinder.getPort(function(err, port){
+    if(err){
+      console.log('查找空闲端口失败：', err);
+    }else{
+      // 使用server监听端口
+      server.listen(port, function () {
+        console.log(chalk.cyan('服务器静态资源路径为:'));
 
-    serverConfig.staticDirs.forEach(function (dir) {
-      console.log('  ' + path.resolve(dir) + '/');
-    })
+        serverConfig.staticDirs.forEach(function (dir) {
+          console.log('  ' + path.resolve(dir) + '/');
+        })
 
-    console.log('\n' + chalk.green(protocol + '-server lauched at ' + protocol + '://localhost:%s'), serverConfig.port);
+        console.log('\n' + chalk.green(protocol + '-server lauched at ' + protocol + '://localhost:%s'), port);
+      })
+    }
   })
 }
