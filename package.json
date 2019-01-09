@@ -1,6 +1,6 @@
 {
   "name": "ls-server",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "a single local static server(ls-server) by express & support http/https",
   "main": "server.js",
   "scripts": {
