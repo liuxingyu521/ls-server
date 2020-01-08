@@ -18,7 +18,7 @@ yargs
   .options({
     port: {
       alias: 'p',
-      description: "<port> 设置服务器端口号， 默认为" + chalk.green('9999'),
+      description: "<port> 设置服务器端口号， 默认为" + chalk.green('8888'),
       type: 'number'
     },
     // https: {

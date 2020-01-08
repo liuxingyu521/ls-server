@@ -5,7 +5,7 @@ module.exports = function(serverConfig) {
   var http = require('http');
   // var https = require('https');
   var chalk = require('chalk');
-  var portFinder = require('portFinder');
+  var portFinder = require('portfinder');
 
   var express = require('express');
   var app = express();
@@ -42,7 +42,7 @@ module.exports = function(serverConfig) {
       res.end();
   })
 
-  portFinder.basePort = serverConfig.port || 8888;
+  portFinder.basePort = serverConfig.port;
   portFinder.getPort(function(err, port){
     if(err){
       console.log('查找空闲端口失败：', err);
