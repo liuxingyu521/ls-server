@@ -2,5 +2,6 @@
 module.exports = {
   port: 8888,
   useHttps: false,
-  staticDirs: ['./public/', '.']
+  staticDirs: ['./public/', '.'],
+  useGzip: false
 }

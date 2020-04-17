@@ -6,9 +6,13 @@ module.exports = function(serverConfig) {
   // var https = require('https');
   var chalk = require('chalk');
   var portFinder = require('portfinder');
+  var compression = require('compression')
 
   var express = require('express');
   var app = express();
+
+  // 是否启用 gzip
+  serverConfig.useGzip && app.use(compression())
 
   // 默认处理当前指定文件夹下的静态文件
   serverConfig.staticDirs.forEach(function(dir){
@@ -54,7 +58,7 @@ module.exports = function(serverConfig) {
         serverConfig.staticDirs.forEach(function (dir) {
           console.log('  ' + path.resolve(dir) + '/');
         })
-
+        serverConfig.useGzip && console.log('\n' + chalk.yellow(`已开启 Gzip`))
         console.log('\n' + chalk.green(protocol + '-server lauched at ' + protocol + '://localhost:%s'), port);
       })
     }

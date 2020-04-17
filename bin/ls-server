@@ -12,7 +12,7 @@ yargs
   .usage(chalk.cyan.bold('ls-server') + ' ~ @'
             + version
             + '\n\n'
-            + 'Usage: $0 [(--port | -p) <port>] [(--dirs | -d) <dir1 dir2 ...>]')
+            + 'Usage: $0 [(--port | -p) <port>] [(--dirs | -d) <dir1 dir2 ...>] [--gzip | -g]')
   .help('help').alias('help', 'h')
   .version('version', version).alias('version', 'v')
   .options({
@@ -29,6 +29,11 @@ yargs
       alias: 'd',
       description: "<dir> 设置服务器静态资源目录，可以设置多个，用空格隔开",
       type: 'array'
+    },
+    gzip: {
+      alias: 'g',
+      description: "<gzip> 设置服务器是否开启 gzip 压缩",
+      type: 'boolean'
     }
   })
 
@@ -38,7 +43,8 @@ var argv = yargs.argv;
 var server_config = {
   port: argv.port || default_config.port,
   // useHttps: argv.https || default_config.useHttps,
-  staticDirs: argv.dirs || default_config.staticDirs
+  staticDirs: argv.dirs || default_config.staticDirs,
+  useGzip: argv.gzip || default_config.useGzip
 }
 
 require('../server')(server_config);

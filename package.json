@@ -1,6 +1,6 @@
 {
   "name": "ls-server",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "a single local static server(ls-server) by express & support http/https",
   "main": "server.js",
   "scripts": {
@@ -29,6 +29,7 @@
     "body-parser": "^1.18.2",
     "chalk": "^2.4.1",
     "commander": "^2.18.0",
+    "compression": "^1.7.4",
     "express": "^4.16.2",
     "portfinder": "^1.0.20",
     "yargs": "^12.0.2"
